@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
+const {v4: uuidv4} = require('uuid');
 
 const operationSchema = new mongoose.Schema({
     _id: {
@@ -15,6 +15,6 @@ const operationSchema = new mongoose.Schema({
         type: Number,
         required: true
     }
-}, { timestamps: true });
+}, {timestamps: true});
 
 module.exports = mongoose.model('Operation', operationSchema);

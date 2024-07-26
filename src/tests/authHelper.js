@@ -1,6 +1,5 @@
-// tests/helpers/authHelper.js
 const supertest = require('supertest');
-const app = require('../app'); // Adjust the path to your Express app
+const app = require('../app');
 
 const registerAndLogin = async () => {
     const request = supertest(app);
@@ -15,4 +14,4 @@ const registerAndLogin = async () => {
     return response.body.token;
 };
 
-module.exports = { registerAndLogin };
+module.exports = {registerAndLogin};

@@ -1,11 +1,10 @@
-// tests/recordsController.test.js
 const supertest = require('supertest');
 const mongoose = require('mongoose');
 const {MongoMemoryServer} = require('mongodb-memory-server');
-const app = require('../app'); // Import your Express app
+const app = require('../app');
 const Operation = require('../models/Operation');
 const Record = require('../models/Record');
-const {registerAndLogin} = require('../tests/authHelper'); // Import the helper function
+const {registerAndLogin} = require('../tests/authHelper');
 const request = supertest(app);
 
 let mongoServer;
@@ -17,10 +16,8 @@ beforeAll(async () => {
     const uri = mongoServer.getUri();
     await mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
-    // Register and login to get the JWT token
     token = await registerAndLogin();
 
-    // Create a test operation
     const operation = new Operation({type: 'addition', cost: 10});
     await operation.save();
     operationId = operation._id;
@@ -66,7 +63,6 @@ describe('Records Controller', () => {
 
     describe('Delete Record', () => {
         it('should soft delete a record', async () => {
-            // Create a new record to delete
             const recordResponse = await request.post('/api/v1/records')
                 .set('Authorization', token)
                 .send({operationType: 'addition', param1: 2, param2: 2});
@@ -78,7 +74,6 @@ describe('Records Controller', () => {
             expect(response.body.success).toBe(true);
             expect(response.body.message).toBe('Record deleted successfully');
 
-            // Verify that the record is marked as deleted
             const record = await Record.findById(recordId);
             expect(record.deleted).toBe(true);
         });

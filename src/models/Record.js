@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
+const {v4: uuidv4} = require('uuid');
 
 const recordSchema = new mongoose.Schema({
     _id: {
@@ -37,6 +37,6 @@ const recordSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
-}, { timestamps: true });
+}, {timestamps: true});
 
 module.exports = mongoose.model('Record', recordSchema);

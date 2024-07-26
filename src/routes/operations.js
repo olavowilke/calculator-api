@@ -1,7 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { createOperation, getOperations, getOperationById, updateOperation, deleteOperation } = require('../controllers/operationsController');
-const { auth } = require('../middleware/auth');
+const {
+    createOperation,
+    getOperations,
+    getOperationById,
+    updateOperation,
+    deleteOperation
+} = require('../controllers/operationsController');
+const {auth} = require('../middleware/auth');
 
 router.post('/', auth, createOperation);
 router.get('/', auth, getOperations);

@@ -11,12 +11,12 @@ mongoose.connect(process.env.MONGO_URI, {
     console.log('Connected to MongoDB');
 
     const operations = [
-        { type: 'addition', cost: 1 },
-        { type: 'subtraction', cost: 1 },
-        { type: 'multiplication', cost: 2 },
-        { type: 'division', cost: 2 },
-        { type: 'square_root', cost: 3 },
-        { type: 'random_string', cost: 4 }
+        {type: 'addition', cost: 1},
+        {type: 'subtraction', cost: 1},
+        {type: 'multiplication', cost: 2},
+        {type: 'division', cost: 2},
+        {type: 'square_root', cost: 3},
+        {type: 'random_string', cost: 4}
     ];
 
     try {
