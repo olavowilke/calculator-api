@@ -1,9 +1,14 @@
-const supertest = require('supertest');
-const app = require('../app');
+import supertest from 'supertest';
+import app from '../app';
 
-const registerAndLogin = async () => {
+interface User {
+    username: string;
+    password: string;
+}
+
+export const registerAndLogin = async (): Promise<string> => {
     const request = supertest(app);
-    const user = {
+    const user: User = {
         username: 'testuser',
         password: 'testpassword'
     };
@@ -13,5 +18,3 @@ const registerAndLogin = async () => {
 
     return response.body.token;
 };
-
-module.exports = {registerAndLogin};
